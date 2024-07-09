@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import ItemForm from "./new-item";
 import ItemList from "./item-list";
+import MealIdeas from "./meal-ideas";
 import itemsData from './item.json';
 
 export default function Page() {
@@ -14,7 +15,7 @@ export default function Page() {
   };
 
   const handleItemSelect = (item) => {
-    const itemName = item.name.split(",")[0].trim();
+    const itemName = item.name.split(",")[0].replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|�[�-�]|�[�-�]|[\u2011-\u26FF]|�[�-�])/g, '').trim();
     setSelectedItemName(itemName);
   };
 
